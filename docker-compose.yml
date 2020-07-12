@@ -8,6 +8,7 @@ services:
       - "80:80"
     volumes:
       - "./:/var/www/html"
+    restart: always
 
   mysql:
     image: mysql:latest
@@ -17,7 +18,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "password"
     volumes:
-      - "./mysql:/var/lib/mysql"
+      - "~/mysql:/var/lib/mysql"
+    restart: always
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -26,3 +28,4 @@ services:
       - "8080:80"
     links:
       - "mysql:db"
+    restart: always
